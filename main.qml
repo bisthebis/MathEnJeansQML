@@ -14,6 +14,7 @@ ApplicationWindow {
         currentIndex: tabBar.currentIndex
 
         Page1 {
+
         }
 
         Page {

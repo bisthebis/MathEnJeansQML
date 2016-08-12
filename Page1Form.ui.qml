@@ -3,20 +3,38 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 
 Item {
-    property alias button1: button1
-    property alias button2: button2
 
-    RowLayout {
-        anchors.centerIn: parent
+    property alias boardWidth: widthBox.value
+    property alias boardHeight: heightBox.value
 
-        Button {
-            id: button1
-            text: qsTr("Press Me 1")
+
+    ColumnLayout {
+        id: columnLayout1
+        anchors.fill: parent
+
+
+        Rectangle {
+            color: "red"
+            id: item1
+            width: parent.width
+            anchors.top: parent.top
+            anchors.bottom: dimensionsLayout.top
         }
+        RowLayout {
+            id: dimensionsLayout
+            width: parent.width;
+            anchors.bottom: parent.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 30;
 
-        Button {
-            id: button2
-            text: qsTr("Press Me 2")
+            SpinBox {
+                id: widthBox
+
+            }
+
+            SpinBox {
+                id: heightBox
+            }
         }
     }
 }

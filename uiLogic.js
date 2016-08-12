@@ -1,4 +1,2 @@
-
-function func() {
-
-}
+var gameWidth;
+var gameHeight;
