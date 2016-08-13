@@ -46,10 +46,17 @@ ApplicationWindow {
             switchValue(2, 0);
             switchValue(1, 1);
             switchValue(0, 2);
-            switchValue(2, 2);//*/
-            //computeResult();
-            if (correct())
+            switchValue(2, 2);
+            computeResult();
+            if (data.correct)
+            {
                 console.log("Working")
+            }
+            else
+            {
+                console.log("wtf ?")
+            }
+
         }
 
         id: data
