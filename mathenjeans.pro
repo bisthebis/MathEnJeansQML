@@ -1,9 +1,10 @@
-QT += qml quick
+QT += qml quick concurrent
 
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    griddata.cpp
+    griddata.cpp \
+    gridsolver.cpp
 
 RESOURCES += qml.qrc
 
@@ -14,4 +15,5 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    griddata.h
+    griddata.h \
+    gridsolver.h

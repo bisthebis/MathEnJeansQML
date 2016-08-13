@@ -1,4 +1,5 @@
 import QtQuick 2.7
+import QtQuick.Dialogs 1.2
 
 import Math.Data 1.0
 
@@ -11,6 +12,8 @@ Page1Form {
     signal gameObjectToggled(int xGame, int yGame, Block sender);
     onGameObjectToggled: {console.log(xGame + ";" + yGame); JS.handleClick(xGame, yGame); JS.updateStates()}
 
+    complete.onClicked: {data.complete();}
+
     Component.onCompleted: {
         JS.initBlockComponent();
         JS.initGame();
@@ -22,7 +25,17 @@ Page1Form {
 
     MathGrid {
         id: data
-        onCorrectChanged: {console.log("Correct !");}
-        onResultChanged: {console.log("Result changed")}
+
+        onCorrectChanged: {if (data.correct) {victory.visible = true;}}
+        onResultChanged: {JS.updateStates()}
+
+
+    }
+
+    MessageDialog {
+        id: victory;
+        title: "Victory !"
+        text: "Congrats, you have won"
+
     }
 }

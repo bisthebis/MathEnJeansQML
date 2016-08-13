@@ -8,6 +8,7 @@ Item {
     property alias boardWidth: widthBox.value
     property alias boardHeight: heightBox.value
     property alias gameCanvas: gameCanvas
+    property alias complete: complete
 
 
 
@@ -42,7 +43,13 @@ Item {
                 id: heightBox
                 value: 5
             }
+
+            Button {
+                id: complete
+                text: qsTr("Complete from first line")
+            }
         }
+
 
 
     }

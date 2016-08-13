@@ -14,6 +14,7 @@ class GridData : public QObject
 
     public:
         explicit GridData(QObject *parent = nullptr, const int w = 3, const int h = 3);
+        explicit GridData(const GridData&) = default;
 
         bool correct() const {return _correct;}
         int GameWidth() const {return width;}
@@ -43,14 +44,13 @@ class GridData : public QObject
         void setValue(int x, int y, bool value);
         void switchValue(int x, int y) {setValue(x, y, !valueAt(x, y));}
 
-
-
-
+        void complete();
 
 
     private:
         void resizeArrays(const int w, const int h);
-
+        void completeRow(int y); // PRE : row != 0, checked is empty in row, row -1 is completed. POST : only called row is changed in checked
+                                 // User MUST emit checkedChanged()
     public:
 
         QBitArray checked;
