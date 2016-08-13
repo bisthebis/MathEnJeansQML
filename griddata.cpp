@@ -1,8 +1,18 @@
 #include "griddata.h"
 
-GridData::GridData(QObject *parent) : QObject(parent)
+GridData::GridData(QObject *parent, const int w, const int h) : QObject(parent), width(w), height(h)
 {
+    //Init BitArrays before connecting
+    setGameWidth(w);
+    setGameHeight(h);
+    connect(this, &GridData::checkedChanged, this, &GridData::computeResult);
 
+}
+
+void GridData::resizeArrays(const int w, const int h)
+{
+    checked.fill(false, w*h);
+    result.fill(false, w*h);
 }
 
 void GridData::computeResult()
@@ -29,4 +39,14 @@ void GridData::computeResult()
         emit correctChanged();
     }
 
+}
+
+void GridData::setValue(int x, int y, bool value)
+{
+    if (!isInBoundaries(x, y))
+        return;
+
+    int i = index(x, y);
+    checked[i] = value;
+    emit checkedChanged();
 }
