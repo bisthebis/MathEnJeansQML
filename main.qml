@@ -20,9 +20,35 @@ ApplicationWindow {
         }
 
         Page {
-            Label {
-                text: qsTr("Second page")
-                anchors.centerIn: parent
+            Grid {
+                Component.onCompleted: {
+                    setGameWidth(3);
+                    setGameHeight(3);
+                    switchValue(0, 0);
+                    switchValue(2, 0);
+                    switchValue(1, 1);
+                    switchValue(0, 2);
+                    switchValue(2, 2);
+                    computeResult();
+                    if (data.correct)
+                    {
+                        console.log("Working")
+                    }
+                    else
+                    {
+                        console.log("wtf ?")
+                    }
+
+                }
+
+                id: data
+                onCorrectChanged: {console.log("Correct !");}
+            }
+
+            Block {
+                width: 50
+                height: 50
+                anchors.top: parent.top
             }
         }
     }
@@ -38,28 +64,5 @@ ApplicationWindow {
         }
     }
 
-    Grid {
-        Component.onCompleted: {
-            setGameWidth(3);
-            setGameHeight(3);
-            switchValue(0, 0);
-            switchValue(2, 0);
-            switchValue(1, 1);
-            switchValue(0, 2);
-            switchValue(2, 2);
-            computeResult();
-            if (data.correct)
-            {
-                console.log("Working")
-            }
-            else
-            {
-                console.log("wtf ?")
-            }
 
-        }
-
-        id: data
-        onCorrectChanged: {console.log("Correct !");}
-    }
 }

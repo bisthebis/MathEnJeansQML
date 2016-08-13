@@ -4,5 +4,9 @@
         <file>Page1.qml</file>
         <file>Page1Form.ui.qml</file>
         <file>uiLogic.js</file>
+        <file>Block.qml</file>
+        <file>assets/checked.png</file>
+        <file>assets/resultBlack.png</file>
+        <file>assets/resultWhite.png</file>
     </qresource>
 </RCC>

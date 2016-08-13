@@ -20,7 +20,7 @@ class GridData : public QObject
         int GameHeight() const {return height;}
 
         bool valueAt(int x, int y) const {return checked.at(index(x, y));}
-        bool safeValueAt(int x, int y) const {if (!isInBoundaries(x, y)) return false; else return valueAt(x, y);}
+        Q_INVOKABLE bool safeValueAt(int x, int y) const {if (!isInBoundaries(x, y)) return false; else return valueAt(x, y);}
 
 
 
