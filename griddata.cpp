@@ -1,5 +1,4 @@
 #include "griddata.h"
-#include <QtGlobal>
 
 
 GridData::GridData(QObject *parent, const int w, const int h) : QObject(parent), width(w), height(h)
@@ -58,11 +57,11 @@ void GridData::setValue(int x, int y, bool value)
 void GridData::completeRow(int y)
 {
     //Safety
-    Q_ASSERT(y != 0);
+    //Q_ASSERT(y != 0);
     for (int x = 0; x < width; ++x)
     {
         int i = index(x, y);
-        Q_ASSERT(!checked[i]);
+        //Q_ASSERT(!checked[i]);
         checked[i] = !result[i-width];
 
 
