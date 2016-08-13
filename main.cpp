@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     grid.setValue(2, 2, true);//*/
 
     QQmlApplicationEngine engine;
-    qmlRegisterType<GridData>("Math.Data", 1, 0, "Grid");
+    qmlRegisterType<GridData>("Math.Data", 1, 0, "MathGrid");
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));//*/
 
     return app.exec();

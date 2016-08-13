@@ -2,10 +2,13 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 
+
 Item {
 
     property alias boardWidth: widthBox.value
     property alias boardHeight: heightBox.value
+    property alias gameCanvas: gameCanvas
+
 
 
     ColumnLayout {
@@ -13,13 +16,15 @@ Item {
         anchors.fill: parent
 
 
-        Rectangle {
-            color: "red"
-            id: item1
-            width: parent.width
+
+        Item {
+            id: gameCanvas
             anchors.top: parent.top
-            anchors.bottom: dimensionsLayout.top
+            anchors.bottom: dimensionsLayout.bottom
+            width: parent.width
+
         }
+
         RowLayout {
             id: dimensionsLayout
             width: parent.width;
@@ -29,12 +34,16 @@ Item {
 
             SpinBox {
                 id: widthBox
+                value: 5
 
             }
 
             SpinBox {
                 id: heightBox
+                value: 5
             }
         }
+
+
     }
 }

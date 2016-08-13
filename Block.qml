@@ -1,10 +1,15 @@
 import QtQuick 2.0
 
+
+
 Item {
 
     property int xInGrid: -1 //Must be changed in JS
     property int yInGrid: -1 //Must be changed in JS
 
+    signal clicked;
+    //onClicked: {JS.handleClick(xInGrid, yInGrid)}
+    onClicked: { parent.parent.parent.gameObjectToggled(xInGrid, yInGrid);}
 
     Image {
         id: resultPic;
@@ -62,5 +67,10 @@ Item {
 
     ]
 
+
+    MouseArea {
+        onClicked: parent.clicked()
+        anchors.fill: parent
+    }
 
 }
