@@ -20,7 +20,7 @@ Item {
         Item {
             id: gameCanvas
             anchors.top: parent.top
-            anchors.bottom: dimensionsLayout.bottom
+            anchors.bottom: dimensionsLayout.top
             width: parent.width
 
         }

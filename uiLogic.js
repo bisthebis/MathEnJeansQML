@@ -73,7 +73,7 @@ function getStateOf(x, y)
 {
     var isChecked = data.safeValueAt(x, y);
     var isBlack = data.safeResultAt(x, y);
-    console.log("result at " + x + ";" + y +" : " + isBlack)
+    // console.log("result at " + x + ";" + y +" : " + isBlack)
     if (isChecked && isBlack)
         return "checkedBlack"
     else if (isChecked && !isBlack)

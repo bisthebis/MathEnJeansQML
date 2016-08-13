@@ -8,5 +8,7 @@
         <file>assets/checked.png</file>
         <file>assets/resultBlack.png</file>
         <file>assets/resultWhite.png</file>
+        <file>Page2.qml</file>
+        <file>Page2Form.ui.qml</file>
     </qresource>
 </RCC>

@@ -31,10 +31,10 @@ ApplicationWindow {
         id: tabBar
         currentIndex: swipeView.currentIndex
         TabButton {
-            text: qsTr("First")
+            text: qsTr("Game")
         }
         TabButton {
-            text: qsTr("Second")
+            text: qsTr("Options")
         }
     }
 
