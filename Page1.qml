@@ -8,8 +8,8 @@ Page1Form {
     onBoardWidthChanged: {console.log("boardWith : " + boardWidth); JS.initGame();}
     onBoardHeightChanged: {console.log("boardHeight : " + boardHeight); JS.initGame();}
 
-    signal gameObjectToggled(int xGame, int yGame);
-    onGameObjectToggled: {console.log(xGame + ";" + yGame); JS.handleClick(xGame, yGame);}
+    signal gameObjectToggled(int xGame, int yGame, Block sender);
+    onGameObjectToggled: {console.log(xGame + ";" + yGame); JS.handleClick(xGame, yGame); JS.updateStates()}
 
     Component.onCompleted: {
         JS.initBlockComponent();

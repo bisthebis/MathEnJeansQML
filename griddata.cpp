@@ -27,6 +27,7 @@ void GridData::computeResult()
                           ^ safeValueAt(x + 1, y)
                           ^ safeValueAt(x, y - 1)
                           ^ safeValueAt(x, y + 1);
+            result[index(x, y)] = newValue;
 
             isCorrect &= newValue;
         }

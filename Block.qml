@@ -9,7 +9,9 @@ Item {
 
     signal clicked;
     //onClicked: {JS.handleClick(xInGrid, yInGrid)}
-    onClicked: { parent.parent.parent.gameObjectToggled(xInGrid, yInGrid);}
+    onClicked: { parent.parent.parent.gameObjectToggled(xInGrid, yInGrid, block);}
+
+    id: block;
 
     Image {
         id: resultPic;

@@ -52,7 +52,7 @@ function initCanvas()
             dynObject.y = blockHeight * j;
             dynObject.xInGrid = i;
             dynObject.yInGrid = j;
-            dynObject.state = "checkedBlack"
+            dynObject.state = "uncheckedWhite"
 
 
             BlockArray[getIndex(i, j)] = dynObject;
@@ -67,4 +67,32 @@ function handleClick(x, y)
     console.log("shift at : " + x + ";" + y);
     console.log(typeof GameData)
     GameData.switchValue(x, y);
+}
+
+function getStateOf(x, y)
+{
+    var isChecked = data.safeValueAt(x, y);
+    var isBlack = data.safeResultAt(x, y);
+    console.log("result at " + x + ";" + y +" : " + isBlack)
+    if (isChecked && isBlack)
+        return "checkedBlack"
+    else if (isChecked && !isBlack)
+        return "checkedWhite"
+    else if (!isChecked && isBlack)
+        return "uncheckedBlack"
+    else if (!isChecked && !isBlack)
+        return "uncheckedWhite"
+}
+
+function updateStates()
+{
+    var getIndex = function(x, y) {return x + y * data.GameHeight;}
+    for (var j = 0; j < boardHeight; j++)
+    {
+        for (var i = 0; i < boardWidth; i++)
+        {
+            BlockArray[getIndex(i, j)].state = getStateOf(i, j);
+
+        }
+    }
 }
