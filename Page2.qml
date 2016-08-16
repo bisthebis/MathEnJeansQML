@@ -8,11 +8,13 @@ Page2Form {
 
 
 
+
     MathGridSolver {
         id: solver
         width: page1.sharedGridData.GameWidth
         height: page1.sharedGridData.GameHeight
-        onWidthChanged: {console.log("gridoslver resized")}
+        onWidthChanged: {console.log("gridsolver resized")}
+        onHeightChanged: {console.log("gridsolver resized")}
 
         onSolvingCompleted: {
 
@@ -23,10 +25,18 @@ Page2Form {
 
     }
 
-    solveButton.onClicked: {solver.beginSolving();}
+    solveButton.onClicked: {solver.beginSolving(); showSolutionButton.text = "Busy solving...";}
     showSolutionButton.onClicked: {
+        if (solver.solutionsSize() < 1)
+        {
+            console.warn("No solution");
+            showSolutionButton.text = "No solution ! Maybe click on solve ?";
+            return;
+
+        }
+
         console.log("index : " + solutionIndex + ". Size : " + solver.solutionsSize());
-        var solution = solver.solution(4);
+        var solution = solver.solution(solutionIndex);
         page1.sharedGridData.copyFirstLine(solution);
         page1.sharedGridData.complete();
 

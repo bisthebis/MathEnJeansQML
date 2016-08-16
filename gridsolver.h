@@ -34,6 +34,7 @@ class GridSolver : public QObject
     public slots:
         void setwidth(int x) {wToSolve = x; emit widthChanged();}
         void setheight(int y) {hToSolve = y; emit heightChanged();}
+        void cleanup();
         int width() const {return wToSolve;}
         int height() const {return hToSolve;}
         QList<bool> solution(const int i) const {return _solutions[i];}
