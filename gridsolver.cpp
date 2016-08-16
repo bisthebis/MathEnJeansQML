@@ -41,5 +41,5 @@ void GridSolver::beginSolving()
 
 void GridSolver::storeSolution()
 {
-    solutions = correctFirstLines.results();
+    _solutions = correctFirstLines.results();
 }

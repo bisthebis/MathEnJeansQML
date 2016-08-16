@@ -4,6 +4,7 @@ import Math.Data 1.0
 Page2Form {
 
     id: page2Form
+    property int solutionIndex: 0
 
 
 
@@ -16,11 +17,23 @@ Page2Form {
         onSolvingCompleted: {
 
             page2Form.showSolutionButton.text = qsTr("Found " + solver.solutionsSize() + " solutions.")
+            parent.solutionIndex = 0;
 
         }
 
     }
 
     solveButton.onClicked: {solver.beginSolving();}
+    showSolutionButton.onClicked: {
+        console.log("index : " + solutionIndex + ". Size : " + solver.solutionsSize());
+        var solution = solver.solution(4);
+        page1.sharedGridData.copyFirstLine(solution);
+        page1.sharedGridData.complete();
+
+        solutionIndex++;
+        if (solutionIndex > solver.solutionsSize())
+            solutionIndex = 0;
+
+    }
 
 }
