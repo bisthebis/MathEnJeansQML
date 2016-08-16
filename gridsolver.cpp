@@ -9,7 +9,7 @@ GridSolver::GridSolver(QObject *parent) : QObject(parent)
     connect(&watcher, &QFutureWatcher<void>::finished, this, &GridSolver::solvingCompleted);
 }
 
-bool GridSolver::isCorrectFirstLine(const QBitArray & line, int w, int h)
+bool GridSolver::isCorrectFirstLine(const QList<bool> & line, int w, int h)
 {
     GridData grid(nullptr, w, h);
     grid.copyFirstLine(line);
@@ -25,15 +25,16 @@ void GridSolver::beginSolving()
     const unsigned long max = 1 << wToSolve;
     for (unsigned long i = 0; i < max; ++i)
     {
-        QBitArray array(wToSolve);
+        QList<bool> array;
+        array.reserve(wToSolve);
         for (int x = 0; x < wToSolve; ++x)
         {
-            array[x] = (max & (1 << x)) > 0;
+            array.push_back((max & (1 << x)) > 0);
         }
         firstLinesToTry.push_back(array);
     }
 
-    correctFirstLines = QtConcurrent::filtered(firstLinesToTry, [this](const QBitArray& a){return GridSolver::isCorrectFirstLine(a, this->width(), this->height());});
+    correctFirstLines = QtConcurrent::filtered(firstLinesToTry, [this](const QList<bool>& a){return GridSolver::isCorrectFirstLine(a, this->width(), this->height());});
     watcher.setFuture(correctFirstLines);
 
 }

@@ -9,6 +9,13 @@ Page1Form {
 
     property alias sharedGridData: data
 
+    Component.onCompleted: {
+        JS.initBlockComponent();
+        JS.initGame();
+
+
+    }
+
     onBoardWidthChanged: {console.log("boardWith : " + boardWidth); JS.initGame();}
     onBoardHeightChanged: {console.log("boardHeight : " + boardHeight); JS.initGame();}
 
@@ -21,11 +28,7 @@ Page1Form {
     onWidthChanged: {JS.initCanvas(); JS.updateStates();}
     onHeightChanged: {JS.initCanvas(); JS.updateStates();}
 
-    Component.onCompleted: {
-        JS.initBlockComponent();
-        JS.initGame();
 
-    }
 
 
 

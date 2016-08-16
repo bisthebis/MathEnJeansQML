@@ -20,7 +20,7 @@ class GridSolver : public QObject
     public:
         explicit GridSolver(QObject *parent = 0);
 
-        static bool isCorrectFirstLine(const QBitArray&, int w, int h); //filter function
+        static bool isCorrectFirstLine(const QList<bool>&, int w, int h); //filter function
 
         static QQmlApplicationEngine* globalEngine; //Global variable;
 
@@ -54,9 +54,9 @@ class GridSolver : public QObject
         int wToSolve; //Size of the grid solutions to generate
         int hToSolve;
         QFutureWatcher<void> watcher;
-        QList<QBitArray> firstLinesToTry;
-        QFuture<QBitArray> correctFirstLines;
-        QList<QBitArray> solutions;
+        QList<QList<bool>> firstLinesToTry;
+        QFuture<QList<bool>> correctFirstLines;
+        QList<QList<bool>> solutions;
 
 
 };

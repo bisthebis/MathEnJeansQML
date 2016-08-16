@@ -38,6 +38,12 @@ function initCanvas()
     console.log("Done")
 
 
+    if (BlockComponent === null)
+    {
+        console.warn("No Block Component in scope");
+        return;
+    }
+
     for (var j = 0; j < nRow; j++)
     {
         for (var i = 0; i < nColumn; i++)
@@ -83,6 +89,12 @@ function getStateOf(x, y)
 
 function updateStates()
 {
+    if (BlockComponent === null)
+    {
+        console.warn("No Block Component in scope")
+        return;
+    }
+
     var getIndex = function(x, y) {return x + y * data.GameHeight;}
     for (var j = 0; j < boardHeight; j++)
     {

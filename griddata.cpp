@@ -12,12 +12,28 @@ GridData::GridData(QObject *parent, const int w, const int h) : QObject(parent),
 
 void GridData::resizeArrays(const int w, const int h)
 {
-    checked.fill(false, w*h);
-    result.fill(false, w*h);
+    const int size = w*h;
+    checked.reserve(size);
+    checked.clear();
+    result.reserve(size);
+    result.clear();
+    for (int i = 0; i < size; ++i)
+    {
+        checked.push_back(false);
+        result.push_back(false);
+    }
+    //checked.fill(false, w*h);
+    //result.fill(false, w*h);
 }
 void GridData::restart()
 {
-    checked.fill(false, width*height);
+    const int size = width*height;
+    checked.reserve(size);
+    checked.clear();
+    for (int i = 0; i < size; ++i)
+    {
+        checked.push_back(false);
+    }
     emit checkedChanged();
 }
 
@@ -58,12 +74,18 @@ void GridData::setValue(int x, int y, bool value)
     emit checkedChanged();
 }
 
-void GridData::copyFirstLine(const QBitArray& src)
+void GridData::copyFirstLine(const QList<bool>& src)
 {
     if (src.size() < width)
         qApp->quit(); //Fatal error
 
-    checked.fill(false, width*height);
+    const int size = width*height;
+    checked.reserve(size);
+    checked.clear();
+    for (int i = 0; i < size; ++i)
+        checked.push_back(false);
+
+    //checked.fill(false, size);
     for (int i = 0; i < width; ++i)
     {
         checked[i] = src.at(i);
