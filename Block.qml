@@ -9,7 +9,7 @@ Item {
 
     signal clicked;
     //onClicked: {JS.handleClick(xInGrid, yInGrid)}
-    onClicked: { parent.parent.parent.gameObjectToggled(xInGrid, yInGrid, block);}
+    onClicked: { parent.parent.parent.gameObjectToggled(xInGrid, yInGrid);}
 
     id: block;
 

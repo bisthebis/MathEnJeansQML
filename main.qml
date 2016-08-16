@@ -8,7 +8,7 @@ ApplicationWindow {
     visible: true
     width: 640
     height: 480
-    title: qsTr("Hello World")
+    title: qsTr("Sens dessus-dessous")
 
     SwipeView {
         id: swipeView
@@ -16,12 +16,13 @@ ApplicationWindow {
         currentIndex: tabBar.currentIndex
 
         Page1 {
+            id: page1
 
 
         }
 
-        Page {
-
+        Page2 {
+            id: page2
 
 
         }

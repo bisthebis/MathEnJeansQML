@@ -42,9 +42,10 @@ class GridData : public QObject
 
         void computeResult();
         void setValue(int x, int y, bool value);
-        void switchValue(int x, int y) {setValue(x, y, !valueAt(x, y));}
+        void switchValue(int x, int y) {setValue(x, y, !safeValueAt(x, y));}
 
         void complete();
+        void copyFirstLine(const QBitArray& src);
 
 
     private:

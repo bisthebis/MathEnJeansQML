@@ -1,5 +1,5 @@
 #include "griddata.h"
-
+#include <QCoreApplication>
 
 GridData::GridData(QObject *parent, const int w, const int h) : QObject(parent), width(w), height(h)
 {
@@ -50,6 +50,19 @@ void GridData::setValue(int x, int y, bool value)
 
     int i = index(x, y);
     checked[i] = value;
+    emit checkedChanged();
+}
+
+void GridData::copyFirstLine(const QBitArray& src)
+{
+    if (src.size() < width)
+        qApp->quit(); //Fatal error
+
+    checked.fill(false, width*height);
+    for (int i = 0; i < width; ++i)
+    {
+        checked[i] = src.at(i);
+    }
     emit checkedChanged();
 }
 

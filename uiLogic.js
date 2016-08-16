@@ -1,11 +1,8 @@
 var BlockComponent = null;
 var BlockArray = null
-var GameData;
 
 function initGame()
 {
-    GameData = data;
-    console.log(typeof GameData)
     data.setGameHeight(boardHeight);
     data.setGameWidth(boardWidth);
     initCanvas();
@@ -65,8 +62,8 @@ function initCanvas()
 function handleClick(x, y)
 {
     console.log("shift at : " + x + ";" + y);
-    console.log(typeof GameData)
-    GameData.switchValue(x, y);
+    console.log("w, h in GameData : " + data.GameWidth + " x " + data.GameHeight)
+    data.switchValue(x, y);
 }
 
 function getStateOf(x, y)

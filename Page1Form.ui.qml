@@ -29,25 +29,29 @@ Item {
         RowLayout {
             id: dimensionsLayout
             width: parent.width;
-            anchors.bottom: parent.bottom
+            anchors.bottom: complete.top
             anchors.horizontalCenter: parent.horizontalCenter
             height: 30;
 
             SpinBox {
                 id: widthBox
-                value: 5
+                value: 6
 
             }
 
             SpinBox {
                 id: heightBox
-                value: 5
+                value: 6
             }
+        }
 
-            Button {
-                id: complete
-                text: qsTr("Complete from first line")
-            }
+        Button {
+            id: complete
+            text: qsTr("Complete from first line")
+            anchors.horizontalCenter: dimensionsLayout.horizontalCenter
+            height: 50
+            anchors.bottom: parent.bottom
+
         }
 
 
