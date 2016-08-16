@@ -25,6 +25,10 @@ class GridSolver : public QObject
 
         static QQmlApplicationEngine* globalEngine; //Global variable;
 
+        //Invokable methods do get information about solving state in QML
+        Q_INVOKABLE bool isSolving() const {return watcher.isRunning();}
+        Q_INVOKABLE double getSolvingProgress() const {return double(watcher.progressValue())/double(watcher.progressMaximum());}
+
     signals:
         void widthChanged();
         void heightChanged();
@@ -52,6 +56,8 @@ class GridSolver : public QObject
             target.complete();}
 
         int solutionsSize() const {return _solutions.size();}
+
+
 
     private:
         int wToSolve; //Size of the grid solutions to generate

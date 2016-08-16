@@ -6,6 +6,15 @@ Page2Form {
     id: page2Form
     property int solutionIndex: 0
 
+    onSolutionIndexChanged: {
+        currentIndexSpinBox.value = solutionIndex;
+        currentIndexText.text = "Current index : " + solutionIndex;
+    }
+
+    currentIndexSpinBox.onValueChanged: {
+        solutionIndex = currentIndexSpinBox.value;
+    }
+
 
 
 
@@ -20,6 +29,7 @@ Page2Form {
 
             page2Form.showSolutionButton.text = qsTr("Found " + solver.solutionsSize() + " solutions.")
             parent.solutionIndex = 0;
+            currentIndexSpinBox.to = solver.solutionsSize();
 
         }
 
@@ -30,9 +40,21 @@ Page2Form {
         if (solver.solutionsSize() < 1)
         {
             console.warn("No solution");
-            showSolutionButton.text = "No solution ! Maybe click on solve ?";
+            if (! solver.isSolving())
+            {
+                showSolutionButton.text = "No solution stored. Maybe you should click on \"solve\" button ?";
+            }
+            else
+            {
+                showSolutionButton.text = "Solving in progress... " + 100 * solver.getSolvingProgress() + "%.";
+            }
+
             return;
 
+        }
+        if (solutionIndex >= solver.solutionsSize()) //Prevents array ofverflow
+        {
+            solutionIndex = 0;
         }
 
         console.log("index : " + solutionIndex + ". Size : " + solver.solutionsSize());
@@ -44,6 +66,20 @@ Page2Form {
         if (solutionIndex > solver.solutionsSize())
             solutionIndex = 0;
 
+    }
+
+
+
+    Timer {
+        repeat: true;
+        running: true;
+        interval: 500;
+        onTriggered: {
+            if (solver.isSolving())
+            {
+                showSolutionButton.text = "Solving in progress... " + 100 * solver.getSolvingProgress() + "%.";
+            }
+        }
     }
 
 }
