@@ -8,7 +8,6 @@ Item {
     property int yInGrid: -1 //Must be changed in JS
 
     signal clicked;
-    //onClicked: {JS.handleClick(xInGrid, yInGrid)}
     onClicked: { parent.parent.parent.gameObjectToggled(xInGrid, yInGrid);}
 
     id: block;

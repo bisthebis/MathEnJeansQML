@@ -3,6 +3,8 @@ import Math.Data 1.0
 
 Page2Form {
 
+    id: page2Form
+
 
 
     MathGridSolver {
@@ -12,8 +14,8 @@ Page2Form {
         onWidthChanged: {console.log("gridoslver resized")}
 
         onSolvingCompleted: {
-            console.log("Solutions found : " + solver.solutionsSize());
-            solver.setFirstSolutionStr("sharedGridData");
+
+            page2Form.showSolutionButton.text = qsTr("Found " + solver.solutionsSize() + " solutions.")
 
         }
 

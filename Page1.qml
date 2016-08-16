@@ -3,7 +3,7 @@ import QtQuick.Dialogs 1.2
 
 import Math.Data 1.0
 
-import "uiLogic.js" as JS
+import "Page1Logic.js" as JS
 
 Page1Form {
 
