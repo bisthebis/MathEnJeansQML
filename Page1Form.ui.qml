@@ -30,7 +30,7 @@ Item {
         RowLayout {
             id: dimensionsLayout
             width: parent.width;
-            anchors.bottom: complete.top
+            anchors.bottom: buttonsLayout.top
             anchors.horizontalCenter: parent.horizontalCenter
             height: 30;
 
@@ -46,21 +46,23 @@ Item {
             }
         }
 
-        Button {
-            id: complete
-            text: qsTr("Complete from first line")
-            anchors.horizontalCenter: dimensionsLayout.horizontalCenter
-            height: 50
-            anchors.bottom: restart.top
-
-        }
-
-        Button {
-            id: restart
-            text: qsTr("Restart")
+        RowLayout {
+            anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
-            height: 50;
-            anchors.horizontalCenter: dimensionsLayout.horizontalCenter
+            id: buttonsLayout
+            height: 30
+
+            Button {
+                id: complete
+                text: qsTr("Complete from first line")
+
+            }
+
+            Button {
+                id: restart
+                text: qsTr("Restart")
+
+            }
         }
 
 
