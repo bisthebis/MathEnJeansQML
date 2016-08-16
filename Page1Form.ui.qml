@@ -9,6 +9,7 @@ Item {
     property alias boardHeight: heightBox.value
     property alias gameCanvas: gameCanvas
     property alias complete: complete
+    property alias restart: restart
 
 
 
@@ -50,8 +51,16 @@ Item {
             text: qsTr("Complete from first line")
             anchors.horizontalCenter: dimensionsLayout.horizontalCenter
             height: 50
-            anchors.bottom: parent.bottom
+            anchors.bottom: restart.top
 
+        }
+
+        Button {
+            id: restart
+            text: qsTr("Restart")
+            anchors.bottom: parent.bottom
+            height: 50;
+            anchors.horizontalCenter: dimensionsLayout.horizontalCenter
         }
 
 

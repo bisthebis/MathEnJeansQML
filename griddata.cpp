@@ -15,6 +15,11 @@ void GridData::resizeArrays(const int w, const int h)
     checked.fill(false, w*h);
     result.fill(false, w*h);
 }
+void GridData::restart()
+{
+    checked.fill(false, width*height);
+    emit checkedChanged();
+}
 
 void GridData::computeResult()
 {

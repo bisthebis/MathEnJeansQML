@@ -16,12 +16,14 @@ Page1Form {
     onGameObjectToggled: {JS.handleClick(xGame, yGame); JS.updateStates()}
 
     complete.onClicked: {data.complete();}
+    restart.onClicked: {data.restart();}
+
+    onWidthChanged: {JS.initCanvas(); JS.updateStates();}
+    onHeightChanged: {JS.initCanvas(); JS.updateStates();}
 
     Component.onCompleted: {
         JS.initBlockComponent();
         JS.initGame();
-
-
 
     }
 

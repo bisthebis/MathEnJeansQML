@@ -39,6 +39,7 @@ class GridData : public QObject
     public slots:
         void setGameWidth(int w) {width = w; resizeArrays(w, height); emit GameWidthChanged();}
         void setGameHeight(int h) {height = h; resizeArrays(width, h); emit GameHeightChanged();}
+        void restart();
 
         void computeResult();
         void setValue(int x, int y, bool value);
