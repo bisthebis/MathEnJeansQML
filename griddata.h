@@ -2,7 +2,7 @@
 #define GRIDDATA_H
 
 #include <QObject>
-#include <QList>
+#include <QVector>
 
 class GridData : public QObject
 {
@@ -46,7 +46,7 @@ class GridData : public QObject
         void switchValue(int x, int y) {setValue(x, y, !safeValueAt(x, y));}
 
         void complete();
-        void copyFirstLine(const QList<bool>& src);
+        void copyFirstLine(const QVector<bool>& src);
 
 
     private:
@@ -55,8 +55,8 @@ class GridData : public QObject
                                  // User MUST emit checkedChanged()
     public:
 
-        QList<bool> checked;
-        QList<bool> result;
+        QVector<bool> checked;
+        QVector<bool> result;
         bool _correct = false;
         int width = 0;
         int height = 0;

@@ -74,7 +74,7 @@ void GridData::setValue(int x, int y, bool value)
     emit checkedChanged();
 }
 
-void GridData::copyFirstLine(const QList<bool>& src)
+void GridData::copyFirstLine(const QVector<bool>& src)
 {
     if (src.size() < width)
         qApp->quit(); //Fatal error

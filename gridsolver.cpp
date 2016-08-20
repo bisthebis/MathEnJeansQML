@@ -21,7 +21,7 @@ void GridSolver::cleanup()
     _solutions.clear();
 }
 
-bool GridSolver::isCorrectFirstLine(const QList<bool> & line, int w, int h)
+bool GridSolver::isCorrectFirstLine(const QVector<bool> & line, int w, int h)
 {
     GridData grid(nullptr, w, h);
     grid.copyFirstLine(line);
@@ -47,7 +47,7 @@ void GridSolver::beginSolving()
     const unsigned long max = 1 << wToSolve;
     for (unsigned long src = 0; src < max; ++src)
     {
-        QList<bool> array;
+        QVector<bool> array;
         array.reserve(wToSolve);
         for (int x = 0; x < wToSolve; ++x)
         {
@@ -56,7 +56,7 @@ void GridSolver::beginSolving()
         firstLinesToTry.push_back(array);
     }
 
-    correctFirstLines = QtConcurrent::filtered(firstLinesToTry, [this](const QList<bool>& a){return GridSolver::isCorrectFirstLine(a, this->width(), this->height());});
+    correctFirstLines = QtConcurrent::filtered(firstLinesToTry, [this](const QVector<bool>& a){return GridSolver::isCorrectFirstLine(a, this->width(), this->height());});
     watcher.setFuture(correctFirstLines);
 
 
