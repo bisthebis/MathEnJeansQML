@@ -1,6 +1,8 @@
 #include "griddata.h"
 #include <QCoreApplication>
 
+#include <QTextStream>
+
 GridData::GridData(QObject *parent, const int w, const int h) : QObject(parent), width(w), height(h)
 {
     //Init BitArrays before connecting
@@ -129,4 +131,34 @@ void GridData::complete()
     }
 
 
+}
+
+void GridData::print(QTextStream& dest) const
+{
+    //1) Print "checked"
+    //2) Print "result"
+
+    dest << tr("Printing \"checked\" array : red circle -> 1, no circle -> 0)") << endl;
+    for (int y = 0; y < height; ++y)
+    {
+        for (int x = 0; x < width; ++x)
+        {
+            const int i = index(x, y);
+            dest << int(checked[i] ? 1 : 0) << ' ';
+        }
+
+        dest << endl;
+    }
+
+    dest << tr("Printing \"result\" array : black circle -> 1, white circle -> 0)") << endl;
+    for (int y = 0; y < height; ++y)
+    {
+        for (int x = 0; x < width; ++x)
+        {
+            const int i = index(x, y);
+            dest << int(result[i] ? 1 : 0) << ' ';
+        }
+
+        dest << endl;
+    }
 }

@@ -4,6 +4,10 @@
 #include <QObject>
 #include <QVector>
 
+#include "globals.h"
+
+class QTextStream;
+
 class GridData : public QObject
 {
     Q_OBJECT
@@ -24,6 +28,8 @@ class GridData : public QObject
         bool resultAt(int x, int y) const {return result.at(index(x, y));}
         Q_INVOKABLE bool safeValueAt(int x, int y) const {if (!isInBoundaries(x, y)) return false; else return valueAt(x, y);}
         Q_INVOKABLE bool safeResultAt(int x, int y) const {if (!isInBoundaries(x, y)) return false; else return resultAt(x, y);}
+
+
 
 
     signals:
@@ -47,6 +53,9 @@ class GridData : public QObject
 
         void complete();
         void copyFirstLine(const QVector<bool>& src);
+
+        void print(QTextStream& destination) const;
+        void printToStdout() const {print(out());}
 
 
     private:

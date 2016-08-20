@@ -16,4 +16,5 @@ include(deployment.pri)
 
 HEADERS += \
     griddata.h \
-    gridsolver.h
+    gridsolver.h \
+    globals.h
