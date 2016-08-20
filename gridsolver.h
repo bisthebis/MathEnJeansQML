@@ -46,15 +46,6 @@ class GridSolver : public QObject
         void beginSolving();
         void storeSolution();
 
-        void setFirstSolution(GridData& target) {if(_solutions.empty()) return;  target.copyFirstLine(_solutions.first()); target.complete();}
-        void setFirstSolutionStr(const QString& name) {
-            //QQmlComponent component(globalEngine);
-            //QObject* MyObject = component.create();
-
-            GridData & target =  *globalEngine->rootObjects().first()->findChild<GridData*>(name);
-            target.copyFirstLine(_solutions.first());
-            target.complete();}
-
         int solutionsSize() const {return _solutions.size();}
 
 
