@@ -15,6 +15,9 @@ Page2Form {
         solutionIndex = currentIndexSpinBox.value;
     }
 
+    function showProgress() {
+        showSolutionButton.text = "Solving in progress... " + (100 * solver.getSolvingProgress()).toFixed(2) + "%.";
+    }
 
 
 
@@ -46,7 +49,7 @@ Page2Form {
             }
             else
             {
-                showSolutionButton.text = "Solving in progress... " + 100 * solver.getSolvingProgress() + "%.";
+                page2Form.showProgress();
             }
 
             return;
@@ -77,7 +80,7 @@ Page2Form {
         onTriggered: {
             if (solver.isSolving())
             {
-                showSolutionButton.text = "Solving in progress... " + 100 * solver.getSolvingProgress() + "%.";
+                page2Form.showProgress();
             }
         }
     }
