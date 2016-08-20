@@ -1,6 +1,11 @@
 var BlockComponent = null;
 var BlockArray = null
 
+function getIndex(x, y)
+{
+    return data.index(x, y);
+}
+
 function initGame()
 {
     data.setGameHeight(boardHeight);
@@ -23,7 +28,6 @@ function initCanvas()
     var nRow = data.GameHeight;
     var blockWidth = gameCanvas.width / nColumn;
     var blockHeight = gameCanvas.height / nRow;
-    var getIndex = function(x, y) {return x + y * nRow;}
 
     BlockArray = new Array(nColumn*nRow);
 
@@ -67,8 +71,10 @@ function initCanvas()
 
 function handleClick(x, y)
 {
-    console.log("shift at : " + x + ";" + y);
-    console.log("w, h in GameData : " + data.GameWidth + " x " + data.GameHeight)
+    console.log("shift at : " + x + ";" + y + '\n' +
+                "Index : " + data.index(x, y) + '\n' +
+                "w, h in GameData : " + data.GameWidth + " x " + data.GameHeight);
+    //console.log()
     data.switchValue(x, y);
 }
 
@@ -95,7 +101,6 @@ function updateStates()
         return;
     }
 
-    var getIndex = function(x, y) {return x + y * data.GameHeight;}
     for (var j = 0; j < boardHeight; j++)
     {
         for (var i = 0; i < boardWidth; i++)

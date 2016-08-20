@@ -29,6 +29,7 @@ class GridData : public QObject
         Q_INVOKABLE bool safeValueAt(int x, int y) const {if (!isInBoundaries(x, y)) return false; else return valueAt(x, y);}
         Q_INVOKABLE bool safeResultAt(int x, int y) const {if (!isInBoundaries(x, y)) return false; else return resultAt(x, y);}
 
+        Q_INVOKABLE int index(int x, int y) const {return x + y * width;}
 
 
 
@@ -62,7 +63,7 @@ class GridData : public QObject
         void resizeArrays(const int w, const int h);
         void completeRow(int y); // PRE : row != 0, checked is empty in row, row -1 is completed. POST : only called row is changed in checked
                                  // User MUST emit checkedChanged()
-    public:
+    private:
 
         QVector<bool> checked;
         QVector<bool> result;
@@ -70,7 +71,7 @@ class GridData : public QObject
         int width = 0;
         int height = 0;
 
-        int index(int x, int y) const {return x + y * width;}
+
         bool isInBoundaries(int x, int y) const {if (x < 0 || y < 0 || x >= width || y >= height) return false; else return true;}
 
 

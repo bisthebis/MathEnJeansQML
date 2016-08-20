@@ -37,7 +37,7 @@ Page1Form {
         objectName: "sharedGridData"
 
         onCorrectChanged: {if (data.correct) {victory.visible = true;}}
-        onResultChanged: {JS.updateStates()}
+        onResultChanged: {JS.updateStates(); data.printToStdout();}
 
 
     }
