@@ -21,7 +21,7 @@ class GridSolver : public QObject
     public:
         explicit GridSolver(QObject *parent = 0);
 
-        static bool isCorrectFirstLine(const QList<bool>&, int w, int h); //filter function
+        static bool isCorrectFirstLine(const QVector<bool>&, int w, int h); //filter function
 
         static QQmlApplicationEngine* globalEngine; //Global variable;
 
@@ -43,7 +43,7 @@ class GridSolver : public QObject
         void cleanup();
         int width() const {return wToSolve;}
         int height() const {return hToSolve;}
-        QList<bool> solution(const int i) const {return _solutions[i];}
+        QVector<bool> solution(const int i) const {return _solutions[i];}
 
         void beginSolving();
         void storeSolution();
@@ -56,9 +56,9 @@ class GridSolver : public QObject
         int wToSolve; //Size of the grid solutions to generate
         int hToSolve;
         QFutureWatcher<void> watcher;
-        QList<QList<bool>> firstLinesToTry;
-        QFuture<QList<bool>> correctFirstLines;
-        QList<QList<bool>> _solutions;
+        QList<QVector<bool>> firstLinesToTry;
+        QFuture<QVector<bool>> correctFirstLines;
+        QList<QVector<bool>> _solutions;
 
 
 };
