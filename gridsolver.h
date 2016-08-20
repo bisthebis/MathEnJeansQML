@@ -35,6 +35,8 @@ class GridSolver : public QObject
 
         void solvingCompleted();
 
+        void errorOnCompletion();
+
     public slots:
         void setwidth(int x) {wToSolve = x; emit widthChanged();}
         void setheight(int y) {hToSolve = y; emit heightChanged();}

@@ -1,6 +1,9 @@
 #include "gridsolver.h"
 #include "griddata.h"
 
+#include <exception>
+#include <iostream>
+
 QQmlApplicationEngine* GridSolver::globalEngine = nullptr;
 
 GridSolver::GridSolver(QObject *parent) : QObject(parent)
@@ -29,8 +32,18 @@ bool GridSolver::isCorrectFirstLine(const QList<bool> & line, int w, int h)
 
 void GridSolver::beginSolving()
 {
-    firstLinesToTry.clear();
-    firstLinesToTry.reserve(1 << wToSolve);
+    try
+    {
+        firstLinesToTry.clear();
+        firstLinesToTry.reserve(1 << wToSolve);
+    }
+
+    catch (...)
+    {
+        //std::cerr << memory_error.what() << std::endl;
+        emit errorOnCompletion();
+        return;
+    }
     const unsigned long max = 1 << wToSolve;
     for (unsigned long src = 0; src < max; ++src)
     {
@@ -45,6 +58,7 @@ void GridSolver::beginSolving()
 
     correctFirstLines = QtConcurrent::filtered(firstLinesToTry, [this](const QList<bool>& a){return GridSolver::isCorrectFirstLine(a, this->width(), this->height());});
     watcher.setFuture(correctFirstLines);
+
 
 }
 

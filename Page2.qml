@@ -1,5 +1,8 @@
 import QtQuick 2.4
+import QtQuick.Dialogs 1.2
+
 import Math.Data 1.0
+
 
 Page2Form {
 
@@ -35,6 +38,16 @@ Page2Form {
             currentIndexSpinBox.to = solver.solutionsSize();
 
         }
+
+        onErrorOnCompletion: {
+            console.error("Not enough memory for solving !");
+            showSolutionButton.text = "Failed solving : not enough memory";
+            memoryErrorDialog.visible = true;
+
+
+        }
+
+
 
     }
 
@@ -83,6 +96,17 @@ Page2Form {
                 page2Form.showProgress();
             }
         }
+    }
+
+    MessageDialog {
+        id: memoryErrorDialog
+        title: "Failed to solve !"
+        text: "Solver had not enough memory to solve. Try with smaller sizes !";
+        /*onAccepted: {
+            console.log("And of course you could only agree.")
+            Qt.quit()
+        }*/
+        Component.onCompleted: visible = false
     }
 
 }
