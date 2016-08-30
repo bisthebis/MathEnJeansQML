@@ -10,5 +10,6 @@
         <file>assets/resultWhite.png</file>
         <file>Page2.qml</file>
         <file>Page2Form.ui.qml</file>
+		<file>model.qmodel</file>
     </qresource>
 </RCC>
