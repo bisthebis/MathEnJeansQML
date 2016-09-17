@@ -22,14 +22,15 @@ Item {
         Flickable {
             anchors.top: parent.top
             anchors.bottom: dimensionsLayout.top
+            width: parent.width
             contentWidth: gameCanvas.width
             contentHeight: gameCanvas.height
             Item {
             id: gameCanvas
             //anchors.top: parent.parent.top
             //anchors.bottom: dimensionsLayout.top
-            width: parent.parent.width
-            height: parent.parent.height
+            width: parent.parent.width*2
+            height: parent.parent.height*2
             }
         }
 

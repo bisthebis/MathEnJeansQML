@@ -6,6 +6,7 @@ import Math.Data 1.0
 import "Page1Logic.js" as JS
 
 Page1Form {
+    id: page1_in
 
     property alias sharedGridData: data
 
