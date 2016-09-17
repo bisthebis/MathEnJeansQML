@@ -19,12 +19,16 @@ Item {
 
 
 
-        Item {
-            id: gameCanvas
+        Flickable {
             anchors.top: parent.top
             anchors.bottom: dimensionsLayout.top
-            width: parent.width
-
+            contentWidth: gameCanvas.width
+            Item {
+            id: gameCanvas
+            //anchors.top: parent.parent.top
+            //anchors.bottom: dimensionsLayout.top
+            width: parent.parent.width
+            }
         }
 
         RowLayout {
