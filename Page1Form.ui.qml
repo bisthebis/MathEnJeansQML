@@ -23,11 +23,13 @@ Item {
             anchors.top: parent.top
             anchors.bottom: dimensionsLayout.top
             contentWidth: gameCanvas.width
+            contentHeight: gameCanvas.height
             Item {
             id: gameCanvas
             //anchors.top: parent.parent.top
             //anchors.bottom: dimensionsLayout.top
             width: parent.parent.width
+            height: parent.parent.height
             }
         }
 
